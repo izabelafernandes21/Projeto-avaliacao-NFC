@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard de Avaliações</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js">
+    </script>
+
+    <script defer src="{{ url_for('static', filename='dashboard.js') }}">
+    </script>
+</head>
+
+<body class="dashboard-body">
+
+    <main class="dashboard-container">
+
+        <header class="dashboard-header">
+
+            <div>
+                <h1>Dashboard de Avaliações</h1>
+                <p>{{ estabelecimento }}</p>
+            </div>
+
+            <form action="/logout" method="POST">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+
+                <button type="submit" class="secondary-button">
+                    Sair
+                </button>
+            </form>
+
+        </header>
+
+        <section class="metrics">
+
+            <div class="metric-card">
+                <p>Total de avaliações</p>
+                <h2 id="total">0</h2>
+            </div>
+
+            <div class="metric-card">
+                <p>Nota média</p>
+                <h2 id="media">0,0</h2>
+            </div>
+
+            <div class="metric-card">
+                <p>Avaliações positivas</p>
+                <h2 id="positivas">0%</h2>
+            </div>
+
+        </section>
+
+        <section class="dashboard-panel">
+
+            <h2>Distribuição das avaliações</h2>
+
+            <div class="chart-container">
+                <canvas id="rating-chart"></canvas>
+            </div>
+
+        </section>
+
+        <section class="dashboard-panel">
+
+            <h2>Comentários recentes</h2>
+
+            <div id="comments-list">
+                <p>Carregando avaliações...</p>
+            </div>
+
+        </section>
+
+        <p id="dashboard-error" class="error hidden" role="alert"></p>
+
+        <button type="button" id="refresh-button" class="primary-button refresh-button">
+            Atualizar dados
+        </button>
+
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="csrf-token" content="{{ csrf_token }}">
+
+    <title>Avalie nosso atendimento</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <script defer src="{{ url_for('static', filename='script.js') }}">
+    </script>
+</head>
+
+<body>
+
+    <main class="card">
+
+        <section id="form-screen">
+
+            <div class="logo">🏪</div>
+
+            <h1>Como foi seu atendimento?</h1>
+
+            <p class="subtitle">
+                Sua opinião ajuda a melhorar
+                nosso atendimento!
+            </p>
+
+            <p class="establishment">
+                {{ estabelecimento }}
+            </p>
+
+            <div class="stars" role="group" aria-label="Avaliação de 1 a 5 estrelas">
+
+                <button type="button" class="star" data-value="1" aria-label="1 estrela">★</button>
+
+                <button type="button" class="star" data-value="2" aria-label="2 estrelas">★</button>
+
+                <button type="button" class="star" data-value="3" aria-label="3 estrelas">★</button>
+
+                <button type="button" class="star" data-value="4" aria-label="4 estrelas">★</button>
+
+                <button type="button" class="star" data-value="5" aria-label="5 estrelas">★</button>
+
+            </div>
+
+            <p id="rating-label" aria-live="polite">
+                Selecione uma nota
+            </p>
+
+            <label for="comment" class="field-label">
+                Comentário (opcional)
+            </label>
+
+            <textarea id="comment" maxlength="500" placeholder="Conte como foi sua experiência..."></textarea>
+
+            <button type="button" id="submit" class="primary-button" disabled>
+                Enviar avaliação
+            </button>
+
+            <p id="error-message" class="error hidden" role="alert"></p>
+
+            <p class="footer">
+                Não solicitamos nome, telefone ou e-mail.
+            </p>
+
+        </section>
+
+        <section id="success-screen" class="hidden" aria-live="polite">
+
+            <div class="logo">✅</div>
+
+            <h1>Obrigado!</h1>
+
+            <p>
+                Sua avaliação foi registrada com sucesso.
+            </p>
+
+            <p class="subtitle">
+                Sua opinião faz a diferença!
+            </p>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>
